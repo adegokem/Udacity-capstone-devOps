@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-deployment
+  labels:
+    app: eks-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eks-app
+  template:
+    metadata:
+      labels:
+        app: eks-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: nginx
+        image: phanhoaithu/udacity-capstone-project-devops
+        ports:
+        - name: http
+          containerPort: 5000
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/os: linux
