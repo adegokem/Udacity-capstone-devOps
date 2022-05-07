@@ -82,7 +82,7 @@ workflows:
       - push-docker:
           requires: [check-code]
       - create-eks-cluster:
-          requires: [upload-docker]
+          requires: [push-docker]
       - deploy-eks-cluster:
           requires: [create-eks-cluster]
        
