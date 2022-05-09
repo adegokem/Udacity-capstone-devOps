@@ -67,11 +67,13 @@ jobs:
               kubectl version --client
               # deploy cluster
               docker pull $DOCKERHUB_USERNAME/$IMAGE_NAME
+              echo "------------------------------------------------------"
               kubectl create namespace eks-deployment
               kubectl apply -f eks-deployment.yaml
               kubectl apply -f eks-service.yaml
               kubectl get all -n eks-deployment
               kubectl -n eks-deployment describe service eks-deployment
+              echo "------------------------------------------------------"
               # echo the deploy status 
               pods = kubectl get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'
               echo APP_POD: $pods
