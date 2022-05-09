@@ -51,7 +51,7 @@ jobs:
               eksctl create cluster --name=EKSCluster-${CIRCLE_WORKFLOW_ID:0:7}
     
     deploy-eks-cluster:
-      docker:
+      docker: 
         - image: circleci/python:2.7.14
           user: root
       working_directory: ~/repo
