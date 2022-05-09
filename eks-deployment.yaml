@@ -9,11 +9,11 @@ spec:
   selector:
     matchLabels:
       app: eks-deployment
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 50%
-      maxSurge: 1
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxUnavailable: 50%
+  #     maxSurge: 1
   template:
     metadata:
       labels:
