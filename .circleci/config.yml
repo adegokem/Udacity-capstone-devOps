@@ -13,6 +13,7 @@ jobs:
         - run:
             name: install Linter run lint to check Dockerfile
             command: |
+              make setup
               make install
               make lint
 
