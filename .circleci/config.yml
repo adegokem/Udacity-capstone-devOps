@@ -11,12 +11,9 @@ jobs:
       steps:
         - checkout
         - run:
-            name: install Linter
+            name: install Linter run lint to check Dockerfile
             command: |
               make install
-        - run:
-            name: run lint to check Dockerfile
-            command: |         
               make lint
 
     push-docker:
