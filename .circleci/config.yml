@@ -67,9 +67,10 @@ jobs:
               kubectl version --client
               echo "-----------------------------------------------------------------------------------"
               # deploy cluster
+              aws eks update-kubeconfig --name EKSCluster-${CIRCLE_WORKFLOW_ID:0:7}
               docker pull $DOCKERHUB_USERNAME/$IMAGE_NAME
               echo "-----------------------------------------------------------------------------------"
-              kubectl port-forward 8080:80
+              # kubectl port-forward 8080:80
               kubectl create namespace eks-deployment
               kubectl apply -f eks-deployment.yaml
               kubectl apply -f eks-service.yaml
